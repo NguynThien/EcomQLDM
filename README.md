@@ -22,10 +22,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="https://img.pokemondb.net/artwork/large/torchic.jpg" alt="Logo" width="80" height="110">
+  <a href="https://github.com/NguynThien/EcomQLDM">
+    <img src="https://github.com/NguynThien/EcomQLDM/blob/master/Preview/logo_1-1_app_caelum.png" alt="Logo" width="160" height="160">
   </a>
-
 <h3 align="center">Thương mại điện máy</h3>
 </div>
 
