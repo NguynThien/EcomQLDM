@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EcomQLDM.ViewModels.HangHoaVM>
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+        <div class="product-item bg-light mb-4">
+            <div class="product-img position-relative overflow-hidden">
+                <a asp-action="Detail" asp-controller="HangHoa" asp-route-id="@item.MaHh">
+                    <img class="img-fluid w-100 h-100" href="Detail/@item.MaHh" src="~/Hinh/HangHoa/@item.Hinh1" alt="@item.TenHH">
+                </a>
+                <div class="product-action">
+
+                    <a class="btn btn-outline-dark btn-square" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.MaHh"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn btn-outline-dark btn-square" href="Detail/@item.MaHh"><i class="fa fa-ellipsis-h"></i></a>
+                </div>
+            </div>
+            <div class="text-center py-4">
+                <a asp-action="Detail" asp-controller="HangHoa" asp-route-id="@item.MaHh">
+                    <a class="h6 text-decoration-none text-truncate" href="Detail/@item.MaHh">@item.TenHH</a>
+                </a>
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                    <h5>@item.DonGia.ToString("#,##0 đ")</h5>
+                </div>
+                @* 
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                    <h5>Chỉ còn: @item.SoLuongHH</h5>
+                </div> *@
+
+            </div>
+        </div>
+    </div>
+}
+<div class="col-12">
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li @ViewBag.p1><a class="page-link" href="~/HangHoa/Shop?page=1">1</a></li>
+            <li @ViewBag.p2><a class="page-link" href="~/HangHoa/Shop?page=2">2</a></li>
+            <li @ViewBag.p3><a class="page-link" href="~/HangHoa/Shop?page=3">3</a></li>
+        </ul>
+    </nav>
+</div>

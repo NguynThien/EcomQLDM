@@ -1,0 +1,137 @@
+﻿@model EcomQLDM.ViewModels.AddHangHoaVM
+@{
+    ViewData["Title"] = "Update Product";
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Car Information</span></h5>
+            <form asp-action="Update" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        @* <label asp-for="@Model.MaHh"></label><sup>*</sup>
+                        <input class="form-control" asp-for="@Model.MaHh" placeholder="@Model.MaHh" />
+                        <span asp-validation-for="@Model.MaHh" class="text-danger"></span>
+ *@
+                        <input type="hidden" class="form-control" asp-for="@Model.MaHh" placeholder="@Model.MaHh" />
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.TenHH"></label><sup>*</sup>
+                        <input class="form-control" asp-for="@Model.TenHH" placeholder="@Model.TenHH" />
+                        <span asp-validation-for="@Model.TenHH" class="text-danger"></span>
+                    </div>
+
+                    @* <div class="col-md-8 form-group">
+                    <label asp-for="@Model.TenAlias"></label><sup>*</sup>
+                    <input class="form-control" asp-for="@Model.TenAlias" />
+                    <span asp-validation-for="@Model.TenAlias" class="text-danger"></span>
+                    </div> *@
+
+                    @* <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MaLoai"></label><sup>*</sup>
+                        <input class="form-control" asp-for="@Model.MaLoai" placeholder="@Model.MaLoai" />
+                        <span asp-validation-for="@Model.MaLoai" class="text-danger"></span>
+                    </div> *@
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.TenLoai"></label><sup>*</sup>
+                        <select asp-for="@Model.TenLoai" class="form-control" asp-items="ViewBag.TenLoai" placeholder="@Model.TenLoai"></select>
+                        <span asp-validation-for="@Model.TenLoai" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MaNcc"></label><sup>*</sup>
+                        <select asp-for="@Model.MaNcc" class="form-control" asp-items="ViewBag.MaNcc" placeholder="@Model.MaNcc"></select>
+                        <span asp-validation-for="@Model.MaNcc" class="text-danger"></span>
+                    </div>
+
+                    @* <div class="col-md-8 form-group">
+                    <label asp-for="@Model.MoTaDonVi"></label>
+                    <input class="form-control" asp-for="@Model.MoTaDonVi" />
+                    <span asp-validation-for="@Model.MoTaDonVi" class="text-danger"></span>
+                    </div> *@
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.DonGia"></label><sup>*</sup>
+                        <input class="form-control" asp-for="@Model.DonGia" placeholder="@Model.DonGia" />
+                        <span asp-validation-for="@Model.DonGia" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <h6 class="pt-2">Hình 1</h6>
+                        <label for="Hinh"><sup></sup></label>
+                        <img src="~/Hinh/HangHoa/@Model.Hinh" alt="@Model.TenHH" style="width: 180px;">
+                        <input class="form-control" asp-for="@Model.Hinh" placeholder="@Model.Hinh" disabled/>
+                        <h6 class="pt-2">Chọn Hình Mới</h6>
+                        <input type="file" name="Hinh" class="form-control" placeholder="@Model.Hinh" />
+                    </div>
+                    <br />
+                    <div class="col-md-8 form-group">
+                        <h6 class="pt-2">Hình 2</h6>
+                        <label for="Hinh"><sup></sup></label>
+                        <img src="~/Hinh/HangHoa/@Model.Hinh2" alt="@Model.TenHH" style="width: 180px;">
+                        <input class="form-control" asp-for="@Model.Hinh2" placeholder="@Model.Hinh2" disabled />
+                        <h6 class="pt-2">Chọn Hình Mới</h6>
+                        <input type="file" name="Hinh2" class="form-control" placeholder="@Model.Hinh2" />
+                    </div>
+                    <br />
+                    <div class="col-md-8 form-group">
+                        <h6 class="pt-2">Hình 3</h6>
+                        <label for="Hinh"><sup></sup></label>
+                        <img src="~/Hinh/HangHoa/@Model.Hinh3" alt="@Model.TenHH" style="width: 180px;">
+                        <input class="form-control" asp-for="@Model.Hinh3" placeholder="@Model.Hinh3" disabled />
+                        <h6 class="pt-2">Chọn Hình Mới</h6>
+                        <input type="file" name="Hinh3" class="form-control" placeholder="@Model.Hinh3" />
+                    </div>
+                    <br />
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MoTaPhu1"></label>
+                        <input class="form-control" asp-for="@Model.MoTaPhu1" placeholder="@Model.MoTaPhu1" />
+                        <span asp-validation-for="@Model.MoTaPhu1" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MoTaPhu2"></label>
+                        <input class="form-control" asp-for="@Model.MoTaPhu2" placeholder="@Model.MoTaPhu2" />
+                        <span asp-validation-for="@Model.MoTaPhu2" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MoTaPhu3"></label>
+                        <input class="form-control" asp-for="@Model.MoTaPhu3" placeholder="@Model.MoTaPhu3" />
+                        <span asp-validation-for="@Model.MoTaPhu3" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MoTaPhu4"></label>
+                        <input class="form-control" asp-for="@Model.MoTaPhu4" placeholder="@Model.MoTaPhu4" />
+                        <span asp-validation-for="@Model.MoTaPhu4" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MoTa"></label>
+                        <input class="form-control" asp-for="@Model.MoTa" placeholder="@Model.MoTa" />
+                        <span asp-validation-for="@Model.MoTa" class="text-danger"></span>
+                    </div>
+
+                    @* <div class="col-md-8 form-group">
+                    <label asp-for="@Model.MaNcc">MaNcc</label>
+                    <input class="form-control" asp-for="@Model.MaNcc" />
+                    <span asp-validation-for="@Model.MaNcc" class="text-danger"></span>
+                    </div> *@
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        <button type="submit" class="btn btn-block btn-primary font-weight-bold py-2">Submit</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+

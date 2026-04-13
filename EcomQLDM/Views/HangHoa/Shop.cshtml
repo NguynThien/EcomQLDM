@@ -1,0 +1,26 @@
+﻿@model IEnumerable<EcomQLDM.ViewModels.HangHoaVM>
+@{
+    ViewData["Title"] = "Mua Hàng";
+    Layout = "_DanhSachHangHoa";
+}
+
+<!-- Breadcrumb Start -->
+@section BreadCum {
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Trang Chủ</a>
+                    <a class="breadcrumb-item text-dark" href="/HangHoa/Shop?page=1">Mua Hàng</a>
+                    <span class="breadcrumb-item active">Danh Sách Hàng</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+}
+<!-- Breadcrumb End -->
+<!-- Shop Start -->
+@await Html.PartialAsync("ProductItem", Model)
+
+
+<!-- Shop End -->

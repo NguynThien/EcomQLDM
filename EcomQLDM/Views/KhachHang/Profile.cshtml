@@ -1,0 +1,79 @@
+﻿@model EcomQLDM.ViewModels.KhachHangVM
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Thông Tin Cá Nhân</span></h5>
+            <form enctype="multipart/form-data">
+                <div class="row">
+
+                    <div class="col-md-8 form-group">
+                        <img class="img-fluid w-44 h-44" src="~/Hinh/KhachHang/@Model.Hinh">
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MaKh"></label>
+                        : 
+                        <b>@Model.MaKh</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.HoTen"></label>
+                        :
+                        <b>@Model.HoTen</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.GioiTinh"></label>
+                        :
+                        <b>@Model.GioiTinh</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.NgaySinh"></label>
+                        :
+                        <b>@Model.NgaySinh</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.DiaChi"></label>
+                        :
+                        <b>@Model.DiaChi</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.Email"></label>
+                        :
+                        <b>@Model.Email</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.DienThoai"></label>
+                        :
+                        <b>@Model.DienThoai</b>
+                    </div>
+
+                    
+                </div>
+
+                <div class="row">
+                    <a asp-action="History" asp-controller="HoaDon">Lịch Sử Mua Hàng</a>
+                </div>
+
+                <div class="row">
+                    <a asp-action="EditKH" asp-controller="KhachHang" asp-route-id="@Model.MaKh">Sửa</a>
+                </div>
+
+                <div class="row">
+                    <a asp-action="DangXuat">Đăng Xuất</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

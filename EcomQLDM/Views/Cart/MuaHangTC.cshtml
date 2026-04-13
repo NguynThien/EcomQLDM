@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Mua Hàng";
+    Layout = "_Layout";
+}
+
+<div class="popup-content">
+    <h2>Xác nhận mua hàng</h2>
+    <p>Chúc mừng khách hàng đã mua hàng thành công!. Thông tin đơn hàng đã chuyển vào lịch sử mua hàng, khách hàng có muốn chuyển đến trang lịch sử mua hàng?.</p>
+    <a href="/" style="display: inline-block; margin-top: 10px; padding: 5px 10px;
+        background-color: #ffc107; color: #fff; text-decoration: none; border-radius: 3px;">
+        Trang Chủ
+    </a>
+    <a asp-action="History" asp-controller="HoaDon" style="display: inline-block; margin-top: 10px; padding: 5px 10px;
+        background-color: #ffc107; color: #fff; text-decoration: none; border-radius: 3px;">
+        Lịch Sử Mua Hàng
+    </a>
+</div>

@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "_Layout";
+}
+<!-- Carousel Start -->
+<div class="container-fluid mb-3">
+    <div class="row px-xl-5">
+        <div class="col-lg-12">
+            <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#header-carousel" data-slide-to="1"></li>
+                    <li data-target="#header-carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item position-relative active" style="height: 560px;">
+                        <img class="position-absolute w-100 h-200" src="~/Hinh/Others/tv-soundbar-c1.png" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative" style="height: 560px;">
+                        <img class="position-absolute w-100 h-200" src="~/Hinh/Others/wm-c2.png" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative" style="height: 560px;">
+                        <img class="position-absolute w-100 h-200" src="~/Hinh/Others/ac-c3.png" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Carousel End -->
+<!-- Breadcrumb Start -->
+@RenderSection("BreadCum", required: false)
+<!-- Breadcrumb End -->
+<!-- Shop Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <!-- Shop Product Start -->
+        <div class="col-lg-12 col-md-8">
+            <div class="row pb-3">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- Shop Product End -->
+    </div>
+</div>
+<!-- Shop End -->

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<EcomQLDM.ViewModels.ChiTietDHVM>
+@{
+    ViewData["Title"] = "Don Hang";
+    Layout = "_adminLayout";
+}
+<!-- Navbar Start -->
+<div class="container-fluid bg-theme-primary mb-30">
+    <div class="row px-xl-5">
+
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-theme-primary navbar-dark py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Caelum</span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a asp-controller="Shipper" asp-action="DonHang" class="nav-item nav-link">Danh Sách Đơn Hàng</a>
+                        <a asp-controller="Shipper" asp-action="DonDaNhan" class="nav-item nav-link active">Đơn Đã Nhận</a>
+                        <a asp-controller="Shipper" asp-action="DonDaGiao" class="nav-item nav-link">Đơn Đã Giao</a>
+
+                    </div>
+                    <div class="nav navbar-nav navbar-right">
+                        <a asp-controller="Shipper" asp-action="Profile" class="nav-item nav-link">Trang Cá Nhân</a>
+                    </div>
+
+                    <div class="nav navbar-nav navbar-right">
+                        <a asp-controller="Shipper" asp-action="DangXuat" class="nav-item nav-link">Đăng Xuất</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<!-- Cart Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-12 table-responsive mb-5">
+            <h4>DANH SÁCH ĐƠN HÀNG</h4>
+            <table class="table table-light table-borderless table-hover text-center mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th></th>
+                        <th>Tên Hàng</th>
+                        <th>Mã Đ.Hàng</th>
+                        <th>Ngày Nhận Giao Hàng</th>
+                        <th style="width: 200px;">Đ.Chỉ Nhận Hàng</th>
+                        <th>Trạng Thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <img src="~/Hinh/HangHoa/@item.Hinh" alt="@item.MaHh" style="width: 50px;">
+                            </td>
+                            <td class="align-middle">@item.TenHang</td>
+                            <td class="align-middle"><a asp-action="ChiTietDonHang" asp-controller="Shipper" asp-route-id="@item.MaDh">Đơn hàng @item.MaDh</a></td>
+                            <td class="align-middle">@item.NgayNhanDh.ToString("dd-MM-yyyy")</td>
+                            <td class="align-middle"><p>@item.DiaChi</p></td>
+                            <td class="align-middle text-trangthai-@item.MaTrangThai"><b>@item.TrangThai</b></td>
+                            <td class="align-middle"><a href="#@item.MaDh" class="btn btn-sm btn-danger">Hủy Nhận Giao Hàng</a></td>
+                            <!-- Popup start -->
+                            <div id="@item.MaDh" class="popup">
+                                <div class="popup-content">
+                                    <h2>Xác nhận hủy nhận giao đơn hàng</h2>
+                                    <p>Shipper có đồng ý hủy nhận giao đơn hàng [@item.TenHang] đến địa chỉ: @item.DiaChi</p>
+                                    <a href="" style="display: inline-block; margin-top: 10px; padding: 5px 10px;
+		                            background-color: #dc3545; color: #fff; text-decoration: none; border-radius: 3px;">
+                                        Không
+                                    </a>
+                                    <a asp-action="HuyGiao" asp-controller="Shipper" asp-route-id="@item.MaDh" style="display: inline-block; margin-top: 10px; padding: 5px 10px;
+		                            background-color: #28a745; color: #fff; text-decoration: none; border-radius: 3px;">
+                                        Xác nhận
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Popup End -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-3 table-responsive mb-5">
+        </div>
+
+    </div>
+</div>
+<!-- Cart End -->

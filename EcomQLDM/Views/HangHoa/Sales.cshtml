@@ -1,0 +1,135 @@
+﻿@{
+    Layout = "_adminLayout";
+}
+
+@model IEnumerable<EcomQLDM.ViewModels.ChiTietPxVM>
+@{
+    ViewData["Title"] = "Thống Kê Hàng";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+
+<!-- Navbar Start -->
+<div class="container-fluid bg-theme-primary mb-30">
+    <div class="row px-xl-5">
+
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-theme-primary navbar-dark py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Caelum</span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a asp-controller="NhanVien" asp-action="PhanQuyen" class="nav-item nav-link">Quản lý</a>
+                        <a asp-controller="HangHoa" asp-action="Dashboard" class="nav-item nav-link">Quản lý hàng hóa</a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-2 mb-5">
+            
+        </div>
+        <div class="col-lg-10 mb-5">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"></span></h5>
+            <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+        </div>
+    </div>
+</div>
+
+@* <script>
+    var listMaHH = [];
+    var listLabel = [];
+    var listData = [];
+    var dataModel = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model));
+    dataModel.forEach(sp => {
+        listMaHH.push(sp.MaHh);
+        listLabel.push(sp.TenHH);
+        listData.push(sp.SoLuongHH);
+    });
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+            //labels: listMaHH,
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15]
+                //data: listData
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: "House Prices vs. Size",
+                    font: { size: 16 }
+                }
+            }
+            onClick: (event) => {
+                const points = myChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false);
+                if (points.length) {
+                    const index = points[0].index;
+                    const label = myChart.data.labels[index];
+                    const value = myChart.data.datasets[0].newData[index];
+                    alert(`Label: ${label}\nValue: ${value}`);
+                    window.location.href = "/HangHoa/Detail/" + value
+                }
+            }
+        }
+    });
+</script> *@
+
+<script>
+    var listMaHH = [];
+    var listLabel = [];
+    var listData = [];
+    var dataModel = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model));
+    dataModel.forEach(sp => {
+        //listMaHH.push(sp.MaHh);
+        listLabel.push(sp.NgayLapPhieu);
+        listData.push(sp.SoLuong);
+    });
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: listLabel,
+            datasets: [{
+                fill: true,
+                borderColor: 'rgb(75, 192, 192)',
+                pointBorderColor: 'rgb(0,0,139)',
+                pointBorderWidth: 4,
+                data: listData
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: "Số lượng hàng",
+                    font: { size: 16 }
+                }
+            }
+
+        }
+    });
+</script>

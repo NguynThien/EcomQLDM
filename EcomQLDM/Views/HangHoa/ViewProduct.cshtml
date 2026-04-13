@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EcomQLDM.ViewModels.HangHoaVM>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th scope="col">MaHH</th>
+            <th scope="col" width="10%">Hinh</th>
+            <th scope="col">TenHH</th>
+            <th scope="col">TenHH</th>
+            <th scope="col">DonGia</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>[@item.MaHh]</td>
+                <td>
+                    <img class="img-thumbnail" src="~/Hinh/HangHoa/@item.Hinh">
+                </td>
+                <td><h6>@item.TenHH</h6></td>
+                <td><h6>@item.TenHH</h6></td>
+                <td><h6>@item.DonGia.ToString("#,##0 đ")</h6></td>
+                <td>
+                    <span>
+                        <a class="btn btn-outline-dark" href="~/HangHoa/Detail/@item.MaHh"><i class="fa fa-bars"></i></a>
+                        <a class="btn btn-outline-dark" href="~/HangHoa/UpdateHH/@item.MaHh"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-outline-dark" href="~/HangHoa/DeleteHH/@item.MaHh"><i class="fa fa-trash"></i></a>
+                    </span>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+
+</table>
+
+
+    

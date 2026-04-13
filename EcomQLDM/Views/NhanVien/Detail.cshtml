@@ -1,0 +1,94 @@
+﻿@model EcomQLDM.ViewModels.NhanVienVM
+@{
+    ViewData["Title"] = "Nhan Vien";
+    Layout = "_adminLayout";
+}
+<!-- Navbar Start -->
+<div class="container-fluid bg-theme-primary mb-30">
+    <div class="row px-xl-5">
+
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-theme-primary navbar-dark py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Caelum</span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a asp-controller="NhanVien" asp-action="DanhSachNhanVien" class="nav-item nav-link">QL Nhân Viên</a>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Chi Tiết</span></h5>
+            <form enctype="multipart/form-data">
+                <div class="row">
+
+                    <div class="col-md-8 form-group">
+                        <img class="img-fluid w-44 h-44" src="~/Hinh/NhanVien/@Model.Hinh">
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.MaNV"></label>
+                        : 
+                        <b>@Model.MaNV</b>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.TenQH"></label>
+                        :
+                        <b>@Model.TenQH</b>
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.HoTen"></label>
+                        :
+                        <b>@Model.HoTen</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.GioiTinh"></label>
+                        :
+                        <b>@Model.GioiTinh</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.DiaChi"></label>
+                        :
+                        <b>@Model.DiaChi</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.Email"></label>
+                        :
+                        <b>@Model.Email</b>
+                    </div>
+
+                    <div class="col-md-8 form-group">
+                        <label asp-for="@Model.DienThoai"></label>
+                        :
+                        <b>@Model.DienThoai</b>
+                    </div>
+
+                    
+                </div>
+
+                <div class="row">
+                    <a asp-action="EditNV" asp-controller="NhanVien" asp-route-id="@Model.MaNV">Chỉnh sửa</a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+

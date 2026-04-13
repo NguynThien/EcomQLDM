@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "_adminLayout";
+}
+
+@model EcomQLDM.ViewModels.ChiTietPNVM
+@{
+    ViewData["Title"] = "Chuc Nang";
+}
+
+<!-- Navbar Start -->
+<div class="container-fluid bg-theme-primary mb-30">
+    <div class="row px-xl-5">
+
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-theme-primary navbar-dark py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Caelum</span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a asp-controller="NhanVien" asp-action="PhanQuyen" class="nav-item nav-link">Quản Lý</a>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-2">
+            
+        </div>
+
+        <div class="col-lg-8" style="border: 2px solid black;">
+            <br />
+            <h4 class="position-relative text-center mb-3">
+                <span class="bg-secondary pr-3">Kho Hàng: @Model.TenKho</span>
+            </h4>
+            <h4 class="position-relative text-center mb-3">
+                <span class="bg-secondary pr-3">Người Lập Phiếu: @Model.HoTenQuanDoc</span>
+            </h4>
+            <h4 class="position-relative text-center mb-3">
+                <span class="bg-secondary pr-3">Số Phiếu Nhập: @Model.MaPN</span>
+            </h4>
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"></span></h5>
+
+            @foreach (var item in Model.DSctpn)
+            {
+                <h4 class="position-relative mb-3">
+                    <span class="bg-secondary pr-3">Hàng Hóa: @item.MaHhNavigation.TenHh</span>
+                    
+                </h4>
+                <h4 class="position-relative mb-3">
+                    <span class="bg-secondary pr-3">Số Lượng Nhập: @item.SoLuong</span>
+                </h4>
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"></span></h5>
+
+            }
+            
+        </div>
+        
+        <div class="col-lg-2">
+            
+        </div>
+        
+    </div>
+</div>

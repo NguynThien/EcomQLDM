@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "_adminLayout";
+}
+
+@model IEnumerable<EcomQLDM.ViewModels.ChiTietDHVM>
+@{
+    ViewData["Title"] = "Thống Kê Doanh Thu";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+<!-- Navbar Start -->
+<div class="container-fluid bg-theme-primary mb-30">
+    <div class="row px-xl-5">
+
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-theme-primary navbar-dark py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Caelum</span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a asp-controller="NhanVien" asp-action="PhanQuyen" class="nav-item nav-link">Quản lý</a>
+                        <a asp-controller="HangHoa" asp-action="DoanhThu" class="nav-item nav-link">Doanh Thu Ngày</a>
+                        <a asp-controller="HangHoa" asp-action="DoanhThuThang" class="nav-item nav-link">Doanh Thu Tháng</a>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-2 mb-5">
+        </div>
+        <div class="col-lg-10 mb-5">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Doanh thu</span></h5>
+            <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+        </div>
+    </div>
+</div>
+
+@* <script>
+    const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+    const yValues = [55, 49, 44, 24, 15];
+    const barColors = ["red", "green", "blue", "orange", "brown"];
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: "World Wine Production 2018",
+                    font: { size: 16 }
+                }
+            }
+        }
+    });
+</script> *@
+<script>
+    var listLabel = [];
+    var listData = [];
+    var dataModel = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model));
+    dataModel.forEach(sp => {
+        listLabel.push(sp.MaHh);
+        listData.push(sp.Dongia);
+    });
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            // labels: ['Red', 'Blue', 'Yellow', 'Green'],
+            labels: listLabel,
+            datasets: [{
+                label: 'Số lượng bán ra',
+                // data: [10, 19, 3, 5],
+                data: listData,
+                backgroundColor: ["red", "green", "blue", "orange", "brown"]
+            }]
+
+        }
+        // options: {
+        //     onClick: (event) => {
+        //         const points = myChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false);
+        //         if (points.length) {
+        //             const index = points[0].index;
+        //             const label = myChart.data.labels[index];
+        //             const value = myChart.data.datasets[0].newData[index];
+        //             // alert(`Label: ${label}\nValue: ${value}`);
+        //             // window.location.href = "/HangHoa/Detail/" + value
+        //             window.location.href = "/HangHoa/Sales/" + value;
+        //         }
+        //     }
+        // }
+    });
+</script>

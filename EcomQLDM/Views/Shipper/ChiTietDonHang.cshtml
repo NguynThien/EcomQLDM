@@ -1,0 +1,107 @@
+﻿@model EcomQLDM.ViewModels.ChiTietDHVM
+@{
+    ViewData["Title"] = "Don Hang";
+    Layout = "_adminLayout";
+}
+<!-- Navbar Start -->
+<div class="container-fluid bg-theme-primary mb-30">
+    <div class="row px-xl-5">
+
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-theme-primary navbar-dark py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Caelum</span>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a asp-controller="Shipper" asp-action="DonHang" class="nav-item nav-link active">Danh Sách Đơn Hàng</a>
+                        <a asp-controller="Shipper" asp-action="DonDaNhan" class="nav-item nav-link">Đơn Đã Nhận</a>
+                        <a asp-controller="Shipper" asp-action="DonDaGiao" class="nav-item nav-link">Đơn Đã Giao</a>
+
+                    </div>
+                    <div class="nav navbar-nav navbar-right">
+                        <a asp-controller="Shipper" asp-action="ThongBao" class="btn px-0 ml-3">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">1</span>
+                        </a>
+                    </div>
+
+                    <div class="nav navbar-nav navbar-right">
+                        <a asp-controller="Shipper" asp-action="Profile" class="btn px-0 ml-3">
+                            <i class="fa fa-user-circle text-primary"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-2">
+        </div>
+
+        <div class="col-lg-8" style="border: 2px solid black;">
+            <br />
+            <h4 class="position-relative text-center mb-3">
+                <span class="bg-secondary pr-3">Đơn hàng số: @Model.MaDh</span>
+            </h4>
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Sản phẩm: @Model.TenHang</span>
+                <span class="bg-secondary pr-3"><img src="~/Hinh/HangHoa/@Model.Hinh" alt="@Model.TenHang" style="width: 200px; margin-left: 180px; border: solid"></span>
+            </h4>
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Số lượng: 1</span>
+            </h4>
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Giá: @Model.Dongia.ToString("#,##0 đ")</span>
+            </h4>
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"></span></h5>
+            
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Người giao hàng: @Model.NguoiGiao</span>
+            </h4>
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Ngày đặt hàng: @Model.NgayDatHang.ToString("dd-MM-yyyy")</span>
+            </h4>
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Ngày lấy hàng: @Model.NgayNhanDh.ToString("dd-MM-yyyy")</span>
+            </h4>
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"></span></h5>
+            
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Người nhận: @Model.NguoiNhan</span>
+            </h4>
+            <h4 class="position-relative mb-3">
+                <span class="bg-secondary pr-3">Địa chỉ: @Model.DiaChi</span>
+            </h4>
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"></span></h5>
+
+        </div>
+        <div class="col-lg-2">
+        </div>
+
+        <div class="col-lg-12">
+            <h1></h1>
+        </div>
+        
+
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-4">
+            <a asp-controller="Shipper" asp-action="HuyGiao" asp-route-id="@Model.MaDh" class="btn btn-block btn-danger font-weight-bold py-2">Hủy Giao Hàng</a>
+        </div>
+        <div class="col-lg-4">
+            <a asp-controller="Shipper" asp-action="GiaoHang" asp-route-id="@Model.MaDh" class="btn btn-block btn-success font-weight-bold py-2">Đã Giao Hàng</a>
+        </div>
+        <div class="col-lg-2">
+        </div>
+
+    </div>
+</div>
+
